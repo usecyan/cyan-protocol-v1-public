@@ -167,6 +167,7 @@ contract CyanPaymentPlanV1 is
             term,
             serviceFeeRate,
             totalNumberOfPayments,
+            1,
             signature
         );
         require(
@@ -402,6 +403,7 @@ contract CyanPaymentPlanV1 is
             term,
             serviceFeeRate,
             totalNumberOfPayments,
+            0,
             signature
         );
         require(
@@ -1035,6 +1037,7 @@ contract CyanPaymentPlanV1 is
         uint256 term,
         uint256 serviceFeeRate,
         uint8 totalNumberOfPayments,
+        uint8 counterPaidPayments,
         bytes memory signature
     ) internal view {
         bytes32 msgHash = keccak256(
@@ -1046,7 +1049,8 @@ contract CyanPaymentPlanV1 is
                 timestamp,
                 term,
                 serviceFeeRate,
-                totalNumberOfPayments
+                totalNumberOfPayments,
+                counterPaidPayments
             )
         );
         bytes32 signedHash = keccak256(
